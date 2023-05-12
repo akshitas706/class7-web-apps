@@ -21,8 +21,13 @@ class BitcoinsController < ApplicationController
   
     # calculate value in USD of user's bitcoin
     usd_value = usd_rate * bitcoin.to_f
+    # using Coindesk API, extract current rate of bitcoin in USD
+    @usd_rate = bitcoin_data["bpi"]["USD"]["rate_float"]
+  
+    # calculate value in USD of user's bitcoin
+    @usd_value = usd_rate * bitcoin.to_f
 
-    
+
     # render bitcoins/index view
   end
   
